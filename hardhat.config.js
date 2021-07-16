@@ -15,7 +15,7 @@ require("./tasks/block-number")
 require("./tasks/random-number-consumer")
 require("./tasks/price-consumer")
 require("./tasks/api-consumer")
-
+require('solidity-coverage')
 
 require('dotenv').config()
 
@@ -25,33 +25,33 @@ const KOVAN_RPC_URL = process.env.KOVAN_RPC_URL || "https://eth-kovan.alchemyapi
 const MNEMONIC = process.env.MNEMONIC || "your mnemonic"
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
 // optional
-const PRIVATE_KEY = process.env.PRIVATE_KEY || "your private key"
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "Your Private key"
 
 module.exports = {
-    defaultNetwork: "hardhat",
+    defaultNetwork: "kovan",
     networks: {
         hardhat: {
             // // If you want to do some forking, uncomment this
-            // forking: {
-            //   url: MAINNET_RPC_URL
-            // }
+            //forking: {
+            //  url: MAINNET_RPC_URL
+            //}
         },
         localhost: {
         },
         kovan: {
             url: KOVAN_RPC_URL,
-            // accounts: [PRIVATE_KEY],
-            accounts: {
-                mnemonic: MNEMONIC,
-            },
+            accounts: [PRIVATE_KEY],
+            //accounts: {
+            //     mnemonic: MNEMONIC,
+            //},
             saveDeployments: true,
         },
         rinkeby: {
             url: RINKEBY_RPC_URL,
-            // accounts: [PRIVATE_KEY],
-            accounts: {
-                mnemonic: MNEMONIC,
-            },
+            accounts: [PRIVATE_KEY],
+            //accounts: {
+            //    mnemonic: MNEMONIC,
+            //},
             saveDeployments: true,
         },
         ganache: {
